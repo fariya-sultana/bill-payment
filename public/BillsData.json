@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "bill_type": "Electricity",
+        "icon": "https://i.postimg.cc/Njj8xTRX/Logo-of-NESCO.png",
+        "organization": "NESCO",
+        "amount": 1890,
+        "due_date": "2025-03-22T06:57:58.110Z"
+    },
+    {
+        "id": 2,
+        "bill_type": "Gas",
+        "icon": "https://i.postimg.cc/dVN2N19x/titas.png",
+        "organization": "TITAS GAS",
+        "amount": 1488,
+        "due_date": "2025-03-28T06:57:58.110Z"
+    },
+    {
+        "id": 3,
+        "bill_type": "Internet",
+        "icon": "https://i.postimg.cc/SKwWqv3L/icon.png",
+        "organization": "BanglaNet",
+        "amount": 1250,
+        "due_date": "2025-04-05T06:57:58.110Z"
+    },
+    {
+        "id": 4,
+        "bill_type": "Water",
+        "icon": "https://i.postimg.cc/C1kbK4p3/icone3.gif",
+        "organization": "WASA",
+        "amount": 980,
+        "due_date": "2025-03-30T06:57:58.110Z"
+    },
+    {
+        "id": 5,
+        "bill_type": "Credit-Card",
+        "icon": "https://i.postimg.cc/J08ZHB1G/icon4.png",
+        "organization": "DBBL",
+        "amount": 2050,
+        "due_date": "2025-04-10T06:57:58.110Z"
+    }
+]
