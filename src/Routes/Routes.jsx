@@ -6,6 +6,9 @@ import HomeLayout from "../Layout/HomeLayout";
 import PayBills from "../Pages/PayBills";
 import BillDetails from "../Pages/BillDetails";
 import AuthLayout from "../Layout/AuthLayout";
+import Profile from "../Pages/Profile";
+import UpdateProfile from "../Pages/UpdateProfile";
+import Loading from "../Components/Loading";
 
 const router = createBrowserRouter([
     {
@@ -20,18 +23,27 @@ const router = createBrowserRouter([
                 path: '/payBills',
                 Component: PayBills,
                 loader: () => fetch('/BillsData.json'),
-
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/payBills/:type',
                 element: <PayBills></PayBills>,
-                loader: () => fetch('/BillsData.json')
+                loader: () => fetch('/BillsData.json'),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/billDetails/:id',
                 element: <BillDetails></BillDetails>,
                 loader: () => fetch('/BillsData.json'),
-
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: '/myProfile',
+                element: <Profile></Profile>
+            },
+            {
+                path: '/updateProfile',
+                element: <UpdateProfile></UpdateProfile>
             }
         ],
     },

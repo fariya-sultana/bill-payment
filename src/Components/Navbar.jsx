@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router'; 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import logo1 from '../assets/payfast.png';
+import logo from '../assets/logo3.png';
 import '../Components/Navbar.css';
 
 const Navbar = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
                                 d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-70 p-2 shadow">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-70 p-2 shadow">
                         <li className='text-primary font bold'><NavLink onClick={handleCloseDropdown} to="/">Home</NavLink></li>
                         <li>
                             <details>
@@ -46,7 +46,7 @@ const Navbar = () => {
                         <li><NavLink onClick={handleCloseDropdown} to="/myProfile" className='text-primary font bold'>My Profile</NavLink></li>
                     </ul>
                 </div>
-                <img src={logo1} width={110} alt="PayFast Logo" className="rounded-md" />
+                <img src={logo} width={110} alt="PayFast Logo" className="rounded-md" />
             </div>
 
             <div className="navbar-center hidden lg:flex gap-12">
@@ -64,7 +64,7 @@ const Navbar = () => {
 
                     <ul
                         tabIndex={0}
-                        className="dropdown-content bg-base-200 menu rounded-box z-10 w-52 p-2 shadow-sm text-primary font-semibold"
+                        className="dropdown-content bg-white menu rounded-box z-10 w-52 p-2 shadow-sm text-primary font-semibold"
                     >
                         {bill}
                     </ul>

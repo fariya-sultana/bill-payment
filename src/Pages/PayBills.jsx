@@ -13,7 +13,7 @@ const PayBills = () => {
 
     return (
         <div className='max-w-3xl mx-auto my-12 bg-base-200 p-4 md:p-8 rounded-md'>
-            <h1 className='text-3xl font-medium text-primary mb-6'>{type ? `${type} Bills` : "Utility Bills"}</h1>
+            <h1 className='text-3xl font-medium text-primary mb-6'>{type ? `${type}` : "All Bills"}</h1>
 
             <div className=' grid gap-8 '>
                 {

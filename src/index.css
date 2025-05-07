@@ -11,8 +11,8 @@
   default: true;
   --color-primary: #104f68 ;
   --color-secondary: #2283a9;
-  --color-base-100: #C6E2FF;
-  --color-base-200: #E2F0FF;
+  --color-base-200: #C6E2FF;
+  --color-base-100: #E2F0FF;
 }
 .a{
   color: s;
