@@ -1,42 +1,50 @@
 [
     {
         "id": 1,
-        "bill_type": "Electricity",
-        "icon": "https://i.postimg.cc/Njj8xTRX/Logo-of-NESCO.png",
+        "bill_type": "Electricity Bill",
+        "icon": "https://i.postimg.cc/K8gc2JTF/elictricity.png",
         "organization": "NESCO",
         "amount": 1890,
-        "due_date": "2025-03-22T06:57:58.110Z"
+        "due_date": "May 10, 2025"
     },
     {
         "id": 2,
-        "bill_type": "Gas",
-        "icon": "https://i.postimg.cc/dVN2N19x/titas.png",
+        "bill_type": "Gas Bill",
+        "icon": "https://i.postimg.cc/9fdW401n/gas-1.png",
         "organization": "TITAS GAS",
         "amount": 1488,
-        "due_date": "2025-03-28T06:57:58.110Z"
+        "due_date": "May 28, 2025"
     },
     {
         "id": 3,
-        "bill_type": "Internet",
-        "icon": "https://i.postimg.cc/SKwWqv3L/icon.png",
+        "bill_type": "Internet Bill",
+        "icon": "https://i.postimg.cc/x1v6ZNR5/bill.png",
         "organization": "BanglaNet",
         "amount": 1250,
-        "due_date": "2025-04-05T06:57:58.110Z"
+        "due_date": "May 08, 2025"
     },
     {
         "id": 4,
-        "bill_type": "Water",
-        "icon": "https://i.postimg.cc/C1kbK4p3/icone3.gif",
+        "bill_type": "Water Bill",
+        "icon": "https://i.postimg.cc/9XRcTLx9/faucet.png",
         "organization": "WASA",
         "amount": 980,
-        "due_date": "2025-03-30T06:57:58.110Z"
+        "due_date": "May 30, 2025"
     },
     {
         "id": 5,
-        "bill_type": "Credit-Card",
-        "icon": "https://i.postimg.cc/J08ZHB1G/icon4.png",
+        "bill_type": "Credit Card Bill",
+        "icon": "https://i.postimg.cc/x1RQYhdw/payment-method.png",
         "organization": "DBBL",
         "amount": 2050,
-        "due_date": "2025-04-10T06:57:58.110Z"
+        "due_date": "May 28, 2025"
+    },
+    {
+        "id": 6,
+        "bill_type": "Tuition Fees Bill",
+        "icon": "https://i.postimg.cc/mrpG19CV/tuition-fees.png",
+        "organization": "TNT School",
+        "amount": 3000,
+        "due_date": "May 18, 2025"
     }
 ]

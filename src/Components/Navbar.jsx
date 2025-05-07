@@ -1,12 +1,26 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
-import logo from '../assets/logo3.png'
-// import logo1 from '../assets/payfast.png'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import logo1 from '../assets/payfast.png'
+
 
 const Navbar = () => {
 
-    const home = <><li className='text-primary font-semibold list-none'><NavLink to={'/'}>Home</NavLink></li></>
-    const profile = <><li className='text-primary font-semibold list-none'><NavLink to={'/myProfile'}>My Profile</NavLink></li></>
+    const pay = <><NavLink to={'/payBills'}>Pay Bills</NavLink></>
+    const home = <>
+        <li className='text-primary font-semibold list-none'><NavLink to={'/'}>Home</NavLink></li>
+    </>
+    const profile = <>
+        <li className='text-primary font-semibold list-none'><NavLink to={'/myProfile'}>My Profile</NavLink></li>
+    </>
+    const bill = <>
+        <li><NavLink to={'/payBills/Electricity-Bill'}>Electricity Bill</NavLink></li>
+        <li><NavLink to={'/payBills/Gas-Bill'}>Gas Bill</NavLink></li>
+        <li><NavLink to={'/payBills/Internet-Bill'}>Internet Bill</NavLink></li>
+        <li><NavLink to={'/payBills/Water-Bill'}>Water Bill</NavLink></li>
+        <li><NavLink to={'/payBills/Credit-Card-Bill'}>Credit Card Bill</NavLink></li>
+        <li><NavLink to={'/payBills/Tuition-Fees-Bill'}>Tuition Fees Bill</NavLink></li>
+    </>
 
     return (
         <div className="navbar bg-base-200 shadow-sm mt-3 md:mt-5 rounded-md">
@@ -17,28 +31,33 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow  ">
-                        {home}    
-                        <li className='font-semibold'>
-                            <a className='text-primary '>Bills</a>
-                            <ul className="p-2 text-primary ">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
+                        className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-70 p-2 shadow  ">
+                        {home}
+                        <li className='font-semibold text-primary '>
+                            <details>
+                                <summary>{pay}</summary>
+                                <ul className='p-2 grid grid-cols-2'>
+                                    {bill}
+                                </ul>
+                            </details>
                         </li>
                         {profile}
                     </ul>
                 </div>
-                <img src={logo} width={110} alt="" className='rounded-md'/>
+                <img src={logo1} width={110} alt="" className='rounded-md' />
             </div>
 
             <div className="navbar-center hidden lg:flex gap-12">
                 {home}
                 <div className="dropdown dropdown-hover">
-                    <a tabIndex={0} role="button" className=" text-primary font-semibold cursor-pointer">Bills Page</a>
-                    <ul tabIndex={0} className="dropdown-content bg-base-200 menu rounded-box z-1 w-52 p-2 shadow-sm text-primary font-semibold">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                    <ul >
+                        <li tabIndex={0} role="button" className=' font-semibold text-primary inline-flex items-end gap-1'>
+                            {pay}
+                            <MdOutlineKeyboardArrowDown size={20}></MdOutlineKeyboardArrowDown>
+                        </li>
+                        <ul tabIndex={0} className="dropdown-content bg-base-200 menu rounded-box z-1 w-52 p-2 shadow-sm text-primary font-semibold">
+                            {bill}
+                        </ul>
                     </ul>
                 </div>
                 {profile}
