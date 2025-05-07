@@ -20,8 +20,8 @@ const BillDetails = () => {
         "Gas Bill": img2,
         "Internet Bill": img3,
         "Water Bill": img4,
-        "Credit-Card Bill": img5,
-        "Tuition-Fees Bill": img6
+        "Credit Card Bill": img5,
+        "Tuition Fees Bill": img6
     };
 
     return (
@@ -31,7 +31,7 @@ const BillDetails = () => {
                     <div className='bg-base-100 rounded-md md:flex space-y-5 text-center md:text-left justify-around items-center p-10'>
                         <div className='relative justify-items-center'>
                             <img src={billImages[bill.bill_type]} alt="" className='w-64 rounded-md bg-white' />
-                            <img width={80} src={bill.icon} alt="" className='absolute md:left-52 left-48 -bottom-4' />
+                            <img width={80} src={bill.icon} alt="" className='absolute left-52  -bottom-4' />
                         </div>
                         <div className='text-primary space-y-4'>
                             <h4 className='font-bold text-xl md:text-2xl'>{bill.organization}</h4>

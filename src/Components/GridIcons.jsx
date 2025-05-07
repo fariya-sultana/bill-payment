@@ -26,8 +26,8 @@ const GridIcons = () => {
     return (
         <div className='max-w-7xl mx-auto  rounded-md mt-8 md:mt-12 px-4'>
 
-            <section className='mb-8 md:mb-12'>
-                <div className="carousel rounded-box max-w-7xl h-50 gap-4">
+            <section className='mb-8 md:mb-12 justify-items-center max-w-5xl mx-auto'>
+                <div className="carousel rounded-box h-50 gap-4">
                     <div className="carousel-item bg-white rounded-md">
                         <img
                             className='rounded-md'
