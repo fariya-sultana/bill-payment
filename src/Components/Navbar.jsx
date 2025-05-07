@@ -1,15 +1,28 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router'; 
+import React, { use } from 'react';
+import { Link, NavLink, } from 'react-router';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import logo from '../assets/logo3.png';
 import '../Components/Navbar.css';
+import { AuthContext } from '../Context/AuthProvider';
+import { FcUnlock } from 'react-icons/fc';
 
 const Navbar = () => {
+
+    const { user, logOut } = use(AuthContext);
+
     const handleCloseDropdown = () => {
-        document.activeElement.blur(); 
+        document.activeElement.blur();
     };
 
-    const bill = (
+    const handleLogout = () => {
+        logOut().then(() => {
+           alert('logout succesfully')
+        }).catch(error => {
+            console.log(error.message)
+        })
+    }
+
+    const bill =
         <>
             <li><NavLink to="/payBills/Electricity-Bill" onClick={handleCloseDropdown}>Electricity Bill</NavLink></li>
             <li><NavLink to="/payBills/Gas-Bill" onClick={handleCloseDropdown}>Gas Bill</NavLink></li>
@@ -18,11 +31,10 @@ const Navbar = () => {
             <li><NavLink to="/payBills/Credit-Card-Bill" onClick={handleCloseDropdown}>Credit Card Bill</NavLink></li>
             <li><NavLink to="/payBills/Tuition-Fees-Bill" onClick={handleCloseDropdown}>Tuition Fees Bill</NavLink></li>
         </>
-    );
 
     return (
         <div className="navbar bg-base-200 shadow-sm mt-3 md:mt-5 rounded-md">
-    
+
             <div className="navbar-start">
 
                 <div className="dropdown">
@@ -56,7 +68,7 @@ const Navbar = () => {
                     <NavLink
                         to="/payBills"
                         className="cursor-pointer flex items-center text-primary font-semibold gap-1"
-                        onClick={() => setTimeout(handleCloseDropdown, 100)} 
+                        onClick={() => setTimeout(handleCloseDropdown, 100)}
                     >
                         Pay Bills
                         <MdOutlineKeyboardArrowDown size={20} />
@@ -74,11 +86,34 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end space-x-2">
-                <Link to={'/auth/login'} className="btn bg-base-100 text-primary font-bold">Login</Link>
-                <Link to={'/auth/register'} className="btn bg-base-100 text-primary font-bold">Register</Link>
+                {
+                    user ?
+                        <div className="dropdown dropdown-end md:dropdown-center">
+                            <div tabIndex={0} role="button" className="bg-secondary p-1 rounded-full">
+                                {
+                                    (user.photoURL) ? <img src={user.photoURL} alt="" className='w-12 h-12 rounded-full' /> : <img src="https://i.postimg.cc/15HJjdw8/3135823.png" alt="" className='w-12 h-12 rounded-full' />
+                                }
+                            </div>
+                            <div tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-54 p-2 shadow-sm text-center text-xl font-medium space-y-1 ">
+                                <div className='bg-base-200 p-6 justify-items-center rounded-md mb-2'>
+                                    {
+                                        (user.photoURL) ? <img src={user.photoURL} alt="" className='w-12 h-12 rounded-full' /> : <img src="https://i.postimg.cc/15HJjdw8/3135823.png" alt="" className='w-12 h-12 rounded-full' />
+                                    }
+                                </div>
+                                <p>{user.displayName}</p>
+                                <p>Balance: <span className='font-bold'>10000</span> BDT </p>
+                                <button onClick={handleLogout} className='btn text-xl mt-2 font-bold inline-flex items-center gap-2'>Log Out <FcUnlock></FcUnlock></button>
+                            </div>
+                        </div> :
+                        <>
+                            <Link to={'/auth/login'} className="btn bg-base-100 text-primary hover:bg-secondary hover:text-white font-bold">Login</Link>
+                            <Link to={'/auth/register'} className="btn bg-base-100 text-primary font-bold hover:bg-secondary hover:text-white">Register</Link>
+                        </>
+                }
             </div>
         </div>
     );
 };
 
 export default Navbar;
+

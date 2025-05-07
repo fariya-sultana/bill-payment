@@ -9,6 +9,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import Profile from "../Pages/Profile";
 import UpdateProfile from "../Pages/UpdateProfile";
 import Loading from "../Components/Loading";
+import PrivateProvider from "../Context/PrivateProvider";
 
 const router = createBrowserRouter([
     {
@@ -17,17 +18,17 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Home
+                element: <Home></Home>
             },
             {
                 path: '/payBills',
-                Component: PayBills,
+                element:  <PrivateProvider><PayBills></PayBills></PrivateProvider> ,
                 loader: () => fetch('/BillsData.json'),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/payBills/:type',
-                element: <PayBills></PayBills>,
+                element: <PrivateProvider><PayBills></PayBills></PrivateProvider>,
                 loader: () => fetch('/BillsData.json'),
                 hydrateFallbackElement: <Loading></Loading>
             },
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myProfile',
-                element: <Profile></Profile>
+                element: <PrivateProvider><Profile></Profile></PrivateProvider>
             },
             {
                 path: '/updateProfile',
