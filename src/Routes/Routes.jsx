@@ -10,19 +10,21 @@ import Profile from "../Pages/Profile";
 import UpdateProfile from "../Pages/UpdateProfile";
 import Loading from "../Components/Loading";
 import PrivateProvider from "../Context/PrivateProvider";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout></HomeLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                index: true,
+                path: '',
                 element: <Home></Home>
             },
             {
                 path: '/payBills',
-                element:  <PrivateProvider><PayBills></PayBills></PrivateProvider> ,
+                element: <PrivateProvider><PayBills></PayBills></PrivateProvider>,
                 loader: () => fetch('/BillsData.json'),
                 hydrateFallbackElement: <Loading></Loading>
             },
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/billDetails/:id',
-                element: <BillDetails></BillDetails>,
+                element: <PrivateProvider><BillDetails></BillDetails></PrivateProvider>,
                 loader: () => fetch('/BillsData.json'),
                 hydrateFallbackElement: <Loading></Loading>
             },
@@ -44,13 +46,14 @@ const router = createBrowserRouter([
             },
             {
                 path: '/updateProfile',
-                element: <UpdateProfile></UpdateProfile>
+                element: <PrivateProvider><UpdateProfile></UpdateProfile></PrivateProvider>
             }
         ],
     },
     {
         path: '/auth',
         element: <AuthLayout></AuthLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/auth/login',

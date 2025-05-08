@@ -4,7 +4,7 @@ import app from '../Firebase/Firebase.config';
 
 
 const auth = getAuth(app);
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
     const googleLogin = () => {
+        setLoading(true)
         return signInWithPopup(auth, provider);
     }
 
@@ -31,6 +32,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        setLoading(true)
         return signOut(auth);
     }
 
@@ -39,8 +41,8 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
         });
-        return unSubscribe();
-    }, [])
+        return () => unSubscribe();
+    }, []);
 
     const authData = {
         user,
@@ -54,7 +56,11 @@ const AuthProvider = ({ children }) => {
         logOut
     };
 
-    return <AuthContext value={authData}>{children}</AuthContext>
+    return (
+        <AuthContext value={authData}>
+            {children}
+        </AuthContext>
+    )
 };
 
 export default AuthProvider;

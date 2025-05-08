@@ -62,7 +62,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex gap-12">
-                <li className="list-none text-primary font-semibold"><NavLink to="/">Home</NavLink></li>
+                <li className="list-none text-primary font-semibold"><NavLink onClick={handleCloseDropdown} to="/">Home</NavLink></li>
 
                 <div className="dropdown dropdown-hover">
                     <NavLink
@@ -82,14 +82,14 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <li className="list-none text-primary font-semibold"><NavLink to="/myProfile">My Profile</NavLink></li>
+                <li className="list-none text-primary font-semibold"><NavLink onClick={handleCloseDropdown} to="/myProfile">My Profile</NavLink></li>
             </div>
 
             <div className="navbar-end space-x-2">
                 {
                     user ?
                         <div className="dropdown dropdown-end md:dropdown-center">
-                            <div tabIndex={0} role="button" className="bg-secondary p-1 rounded-full">
+                            <div tabIndex={0} role="button" className="bg-secondary p-1 rounded-full w-12 h-12">
                                 {
                                     (user.photoURL) ? <img src={user.photoURL} alt="" className='w-12 h-12 rounded-full' /> : <img src="https://i.postimg.cc/15HJjdw8/3135823.png" alt="" className='w-12 h-12 rounded-full' />
                                 }
@@ -102,7 +102,7 @@ const Navbar = () => {
                                 </div>
                                 <p>{user.displayName}</p>
                                 <p>Balance: <span className='font-bold'>10000</span> BDT </p>
-                                <button onClick={handleLogout} className='btn text-xl mt-2 font-bold inline-flex items-center gap-2'>Log Out <FcUnlock></FcUnlock></button>
+                                <button type='submit' onClick={handleLogout} className='btn text-xl mt-2 font-bold inline-flex items-center gap-2'>Log Out <FcUnlock></FcUnlock></button>
                             </div>
                         </div> :
                         <>

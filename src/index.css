@@ -1,7 +1,5 @@
-
-
-
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default;
 }
@@ -9,11 +7,12 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #104f68 ;
+  --color-primary: #104f68;
   --color-secondary: #2283a9;
   --color-base-200: #C6E2FF;
   --color-base-100: #E2F0FF;
 }
-.a{
-  color: s;
+
+html{
+  overflow-y: scroll;
 }

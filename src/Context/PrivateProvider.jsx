@@ -1,23 +1,24 @@
-import React, { use} from 'react';
+import React, { use, useEffect } from 'react';
 import { AuthContext } from './AuthProvider';
-import { Navigate, useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Loading from '../Components/Loading';
 
 const PrivateProvider = ({ children }) => {
-
-    const {loading, user} = use(AuthContext);
+    const { loading, user } = use(AuthContext);
     const location = useLocation();
-    
+    const navigate = useNavigate();
 
-    if (loading) {
-        return <Loading></Loading>
+    useEffect(() => {
+        if (!loading && !user) {
+            navigate('/auth/login', { state: location, replace: true });
+        }
+    }, [loading, user, location, navigate]);
+
+    if (loading || (!user && location.pathname !== '/auth/login')) {
+        return <Loading />;
     }
 
-    if(user) {
-        return children;
-    }
-
-    return <Navigate state={location?.pathName} to={'/auth/login'}></Navigate>
+    return user ? children : null;
 };
 
 export default PrivateProvider;
