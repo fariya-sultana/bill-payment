@@ -8,6 +8,9 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
+    const [balance, setBalance] = useState(10000);
+    const [paidBills, setPaidBills] = useState([]);
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
 
@@ -44,6 +47,16 @@ const AuthProvider = ({ children }) => {
         return () => unSubscribe();
     }, []);
 
+
+    const payBill = (billId, amount) => {
+        if (paidBills.includes(billId)) return false;
+        if (amount > balance) return false;
+
+        setPaidBills([...paidBills, billId]);
+        setBalance(balance - amount);
+        return true;
+    };
+
     const authData = {
         user,
         setUser,
@@ -53,7 +66,10 @@ const AuthProvider = ({ children }) => {
         loginUser,
         googleLogin,
         updateUser,
-        logOut
+        logOut,
+        balance,
+        paidBills,
+        payBill
     };
 
     return (

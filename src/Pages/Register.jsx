@@ -1,44 +1,58 @@
 import React, { use } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthProvider';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
     const navigate = useNavigate();
-    const { setUser, createUser, googleLogin } = use(AuthContext);
+    const { createUser, googleLogin, updateUser, setUser } = use(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
 
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log( email, password);
 
         createUser(email, password)
-            .then(result => {
+            .then((result) => {
                 const user = result.user;
-                setUser(user);
-                navigate('/');
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: photo });
+                        toast.success('Login successful! 🎉');
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        setUser(user);
+                        console(error.message)
+                    })
+
             })
             .catch(error => {
-                alert(error.message);
+                toast.error("Login failed. Please check your credentials.");
+                console.log(error.message);
             })
     }
 
     const handleGoogleBtn = () => {
-        googleLogin().then(result => {
-            const user = result.user;
-            setUser(user);
+        googleLogin().then(() => {
+            toast.success('Login successful! 🎉');
             navigate('/');
-            console.log(result.user)
         }).catch(error => {
+            toast.error("Login failed. Please check your credentials.");
             console.log(error.message);
         })
     }
 
     return (
         <div className="hero px-2 my-2">
-
+            <Helmet>
+                <title>PayFast | Register page</title>
+            </Helmet>
             <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl py-5" >
                 <h2 className='font-bold text-3xl text-center text-primary pb-3'>Register your account</h2>
 

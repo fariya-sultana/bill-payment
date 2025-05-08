@@ -10,7 +10,7 @@ const HomeLayout = () => {
             <main className='flex-grow'>
                 <Outlet></Outlet>
             </main>
-            <footer className='shrink-0'>
+            <footer className='shrink-0 '>
                 <Footer></Footer>
             </footer>
         </div>

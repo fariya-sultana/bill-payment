@@ -1,13 +1,15 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthProvider';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
     const { loginUser, googleLogin } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-    const from = location.state?.from?.pathname || '/';
+    const from = location.state?.pathname || '/';
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -17,26 +19,35 @@ const Login = () => {
 
         loginUser(email, password)
             .then(() => {
-                navigate(from, {replace: true});
+                toast.success('Login successful! 🎉');
+                navigate(from, { replace: true });
             })
             .catch(error => {
-                alert(error.message);
+                toast.error("Login failed. Please check your credentials.");
+                console.log(error.code);
             });
 
     };
-
+    console.log(location)
     const handleGoogleBtn = () => {
-        googleLogin().then(() => {
-            navigate(from, {replace: true});
-        })
-        .catch(error => {
-            alert(error.message)
-        })
+        googleLogin()
+            .then(() => {
+                toast.success('Login successful! 🎉');
+                navigate(from, { replace: true });
+            })
+
+            .catch(error => {
+                toast.error("Login failed. Please check your credentials.");
+                console.log(error.message)
+            })
     }
 
 
     return (
         <div className="hero mt-16 p-3">
+            <Helmet>
+                <title>PayFast | Login Page</title>
+            </Helmet>
 
             <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl py-5" >
 

@@ -1,6 +1,8 @@
 import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProfile = () => {
 
@@ -15,15 +17,18 @@ const UpdateProfile = () => {
 
         updateUser({ displayName: name, photoURL: photo }).then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
+            toast.success('Profile updated successfully! 🎉');
             navigate('/myProfile')
         }).catch(error => {
             setUser(user);
-            alert(error.message)
+            console.log(error.message)
         })
     }
     return (
         <div className="hero py-12 px-4">
-
+             <Helmet>
+                <title>PayFast | Profile Update</title>
+             </Helmet>
             <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl py-4">
                 <h2 className='font-bold text-3xl text-center text-primary'>Update Your Profile</h2>
                 <div className="card-body">

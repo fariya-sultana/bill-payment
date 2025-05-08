@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "paid": false,
         "bill_type": "Electricity Bill",
         "icon": "https://i.postimg.cc/K8gc2JTF/elictricity.png",
         "organization": "NESCO",
@@ -9,6 +10,7 @@
     },
     {
         "id": 2,
+        "paid": false,
         "bill_type": "Gas Bill",
         "icon": "https://i.postimg.cc/9fdW401n/gas-1.png",
         "organization": "TITAS GAS",
@@ -17,6 +19,7 @@
     },
     {
         "id": 3,
+        "paid": false,
         "bill_type": "Internet Bill",
         "icon": "https://i.postimg.cc/x1v6ZNR5/bill.png",
         "organization": "BanglaNet",
@@ -25,6 +28,7 @@
     },
     {
         "id": 4,
+        "paid": false,
         "bill_type": "Water Bill",
         "icon": "https://i.postimg.cc/9XRcTLx9/faucet.png",
         "organization": "WASA",
@@ -33,6 +37,7 @@
     },
     {
         "id": 5,
+        "paid": false,
         "bill_type": "Credit Card Bill",
         "icon": "https://i.postimg.cc/x1RQYhdw/payment-method.png",
         "organization": "DBBL",
@@ -41,6 +46,7 @@
     },
     {
         "id": 6,
+        "paid": false,
         "bill_type": "Tuition Fees Bill",
         "icon": "https://i.postimg.cc/mrpG19CV/tuition-fees.png",
         "organization": "TNT School",

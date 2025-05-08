@@ -29,12 +29,6 @@ const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
-                path: '/payBills/:type',
-                element: <PrivateProvider><PayBills></PayBills></PrivateProvider>,
-                loader: () => fetch('/BillsData.json'),
-                hydrateFallbackElement: <Loading></Loading>
-            },
-            {
                 path: '/billDetails/:id',
                 element: <PrivateProvider><BillDetails></BillDetails></PrivateProvider>,
                 loader: () => fetch('/BillsData.json'),

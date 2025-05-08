@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Context/AuthProvider';
 import { FaUserEdit } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
 
@@ -10,11 +11,14 @@ const Profile = () => {
 
     return (
         <div className='my-6 max-w-2xl md:mx-auto mx-4'>
+            <Helmet>
+                <title>PayFast | My Profile</title>
+            </Helmet>
             <h2 className='font-bold text-3xl text-center text-primary mb-4'>Profile Information</h2>
             <div className='bg-base-200  flex  rounded-md items-center justify-center text-center p-8'>
 
-                <div>
-                    <div className='relative justify-items-center w-60 h-60 rounded-full mb-4 '>
+                <div className='justify-items-center'>
+                    <div className='relative w-60 h-60 rounded-full mb-4 '>
                         {
                             (user.photoURL) ? <img src={user.photoURL} alt="" className='w-60 h-60 rounded-full mb-4' /> : <img src="https://i.postimg.cc/15HJjdw8/3135823.png" alt="" className='w-60 h-60 mb-4 rounded-full' />
                         }
@@ -25,7 +29,7 @@ const Profile = () => {
                         <p><span>{user.displayName} </span></p>
                         <p><span>{user.email} </span></p>
                     </div>
-                    <Link to={'/updateProfile'} className='btn  w-1/2 btn-secondary'>Update </Link>
+                    <Link to={'/updateProfile'} className='btn w-40 btn-secondary'>Update </Link>
                 </div>
             </div >
         </div>
