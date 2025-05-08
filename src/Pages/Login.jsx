@@ -28,7 +28,6 @@ const Login = () => {
             });
 
     };
-    console.log(location)
     const handleGoogleBtn = () => {
         googleLogin()
             .then(() => {
